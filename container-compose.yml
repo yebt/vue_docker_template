@@ -1,0 +1,25 @@
+version: "2"
+services:
+  ng_app:
+    container_name: vue_test
+    # image: node:lts-alpine
+    image: vue_test
+    build: .
+    # user: "node"
+    # priviligied: true
+    working_dir: /home/node/app
+    # entrypoint: /bin/fish
+
+    # environment:
+    #   - NODE_ENV=production
+    volumes:
+      - ./spr_vue_app/:/home/node/app:Z
+    expose:
+      - "8000"
+    ports:
+      - "6200:8000"
+    # command: "npm start"
+    # command: "top"
+    restart: always
+    tty: true
+    command: " npm run dev -- --host --port 8000 "
